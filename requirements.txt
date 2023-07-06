@@ -1,0 +1,7 @@
+moviepy
+pydub
+openai
+numpy
+streamlit
+moviepy
+langchain
