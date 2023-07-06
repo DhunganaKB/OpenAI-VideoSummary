@@ -20,8 +20,14 @@ st.markdown(original_text, unsafe_allow_html=True)
 #st.header('Please, upload mp4 video for analysis here')
 
 #### environment variable
-from dotenv import load_dotenv, find_dotenv
-load_dotenv(find_dotenv(), override=True)
+# from dotenv import load_dotenv, find_dotenv
+# load_dotenv(find_dotenv(), override=True)
+
+headers = {
+    "authorization":st.secrets['OPENAI_API_KEY'],
+    "content-type":"application/json"
+    }
+openai.api_key = st.secrets["OPENAI_API_KEY"]
 
 ## Reading input mp4 file and converting it into .mp3 file
 uploaded_file = st.sidebar.file_uploader("Upload your mp4 file", type="mp4")
@@ -99,7 +105,7 @@ if uploaded_file is not None:
 
     all_text = []
 
-    print(len(audio_segment))
+    #print(len(audio_segment))
     len_set = len(audio_segment)
 
     combined_txt=''
@@ -108,20 +114,19 @@ if uploaded_file is not None:
         if (start_time + segment_duration) > len_set:
             segment = audio_segment[start_time:len_set]
             # print('yes')
-            print(i, start_time, len_set)
-
+            #print(i, start_time, len_set)
         else:
             segment = audio_segment[start_time:start_time + segment_duration]
-            print(i, start_time, (start_time + segment_duration))
+            #print(i, start_time, (start_time + segment_duration))
 
         # Save the segment to a temporary file
         segment_path = os.path.join(temp_dir.name, f"segment_{i}.mp3")
         segment.export(segment_path, format="mp3")
-        print(segment_path)
+        #print(segment_path)
 
         with open(segment_path, "rb") as audio_file:
             transcript = openai.Audio.transcribe("whisper-1", audio_file)
-            print(transcript['text'])
+            #print(transcript['text'])
 
         combined_txt = combined_txt + '' + transcript['text']
 
