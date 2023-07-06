@@ -5,6 +5,5 @@ numpy
 streamlit
 moviepy
 langchain
-ffmpeg
 ffmpeg-python
 ffprobe
