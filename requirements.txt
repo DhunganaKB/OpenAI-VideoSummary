@@ -5,3 +5,4 @@ numpy
 streamlit
 moviepy
 langchain
+ffprobe
