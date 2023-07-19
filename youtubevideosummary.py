@@ -73,12 +73,12 @@ def summarize(transcript_filename):
     
     print('Starting summarizing ... ', end='')
     response = openai.ChatCompletion.create(
-        model='gpt-3.5-turbo',
+        model='gpt-3.5-turbo-16k',
         messages=[
             {'role': 'system', 'content': system_prompt},
             {'role': 'user', 'content': prompt}
         ],
-        max_tokens=2048,
+        max_tokens=4096,
         temperature=1
     
     )
