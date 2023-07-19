@@ -9,8 +9,14 @@ import openai
 #from langchain.llms import OpenAI
 import dotenv
 
-from dotenv import load_dotenv, find_dotenv
-load_dotenv(find_dotenv(), override=True)
+# from dotenv import load_dotenv, find_dotenv
+# load_dotenv(find_dotenv(), override=True)
+
+headers = {
+    "authorization":st.secrets['OPENAI_API_KEY'],
+    "content-type":"application/json"
+    }
+openai.api_key = st.secrets["OPENAI_API_KEY"]
 
 st.title("YouTube Video Summary")
 st.header("Provide youtube url link to summarize")
