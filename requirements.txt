@@ -8,4 +8,4 @@ langchain
 tiktoken
 ffmpeg-python
 ffprobe
-git+https://github.com/JavDomGom/pytube
+https://github.com/JavDomGom/pytube
