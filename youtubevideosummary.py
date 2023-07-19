@@ -7,7 +7,6 @@ from pytube.exceptions import RegexMatchError
 import re
 import openai
 #from langchain.llms import OpenAI
-import dotenv
 
 # from dotenv import load_dotenv, find_dotenv
 # load_dotenv(find_dotenv(), override=True)
